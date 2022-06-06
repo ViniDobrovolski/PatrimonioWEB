@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SysAplicativo.Models.DbLocal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Local</h1>
+
+<p>
+    <a asp-action="Create">Criar novo local</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                 <h3>Nome</h3>
+            </th>
+            <th>
+                 <h3>Descrição</h3>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomelocal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricaolocal)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

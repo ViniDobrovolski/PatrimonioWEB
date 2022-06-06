@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SysAplicativo.Models.DbUsuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Usuario</h1>
+
+<!-- <p>
+    @using(Html.BeginForm())
+    {
+    <text>Nome</text>@Html.DropDownList("nome",new SelectList (ViewBag.Nome))
+    <text>Login</text>@Html.DropDownList("login",new SelectList (ViewBag.Login))
+    <input type="submit" value="Procurar" />
+    }
+</p>
+-->
+
+
+
+
+
+<p>
+    <a asp-action="Create">Criar novo usuário</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                 <h3>Nome</h3>
+            </th>
+            <th>
+                 <h3>Login</h3>
+            </th>
+            <th>
+                 <h3>Senha</h3>
+            </th>
+            <th>
+                 <h3>Status</h3>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
